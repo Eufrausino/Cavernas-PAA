@@ -1,3 +1,20 @@
+/**************************************************************
+ * Nome do arquivo: leitura.c
+ * Projeto: Caverna-PAA
+ * Descrição: definições de funcionalidades para ler o Arquivo de acordo com as 
+ * 
+ * Autor(es): Gabriel de Pádua 
+ * Data de criação: 04/01/2025
+ * 
+ * Histórico de versões:
+ *    - v1.0 (gabriel)- 15/11/2024: criada função lerArquivo
+ * 
+ * Dependências:
+ *    - mapa.h
+ * 
+ * Observações:
+ *    - 
+ **************************************************************/
 #include "../Headers/leitura.h"
 
 void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, ApontadorMapa mapa) {
@@ -47,8 +64,10 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
 
     fclose(arquivo);
 
-    // Exibir o mapa, se desejado
-    if (mapa != NULL) {
-        MostrarMapa(*mapa, informacoes->linhas, informacoes->colunas);
-    }
+    // Exibir o mapa
+    // if (mapa != NULL) {
+    //     MostrarMapa(*mapa, informacoes->linhas, informacoes->colunas);
+    // }
+
+    printf("Mapa lido com sucesso!\n");
 }

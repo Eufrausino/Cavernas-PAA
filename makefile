@@ -14,7 +14,7 @@ TEST_LEITURA = Test/leitura_teste.c Src/leitura.c Src/mapa.c
 TEST_OUT_LEITURA = Out/leitura_teste
 EXEC_TEST_LEITURA = ./$(TEST_OUT_LEITURA)
 
-#------------------------------Main----------------------------------------------
+#------------------------------Rules----------------------------------------------
 compile:
 	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
 
