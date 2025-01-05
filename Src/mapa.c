@@ -9,8 +9,8 @@
  * Histórico de versões:
  *    - v1.0 (gabriel)- 15/11/2024: criada funçoes criar mapa e apagar mapa
  *    - v1.1 (gabriel)- 16/11/2024: criada funções mostrar mapa e preencher mapa
- *    - v1.2 (matheus)- 20/11/2024: criada função insere labirinto
- * 
+ *    - v2.0 (gabriel)- 04/01/2025: alterado tipo de dados da matriz em (CriaMapa) e modo como se trata
+ * a matriz em (MostrarMapa) e (PreencherMapa) 
  * Dependências:
  *    - mapa.h
  * 
