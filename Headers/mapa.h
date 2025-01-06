@@ -30,15 +30,15 @@
 #include <time.h>
 
 //-------------------Renomeando tipos de dados-------------------
-typedef char*** ApontadorMapa;// apontador de matriz de inteiros
-typedef char** Mapa; // matriz de inteiros 
-
+typedef int*** ApontadorMapa;// apontador de matriz de inteiros
+typedef int** Mapa; // matriz de inteiros 
+//Antes era char
 
 //-------------------Protótipos de funções-------------------
 void CriaMapa(ApontadorMapa mapa, int linhas, int colunas);
 void ApagaMapa(ApontadorMapa mapa, int linhas);
 void MostrarMapa(Mapa mapa, int linhas, int colunas);
 void PreencherMapa(ApontadorMapa mapa, int posicacaoLinha, char valores[],int qtdColunas);
-
+void EncontraIeF(Mapa mapa, int linhas, int colunas, int *linhaF, int *colunaF, int *linhaI,int *colunaI);
 
 #endif

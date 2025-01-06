@@ -10,7 +10,7 @@ EXEC_MAIN = ./$(MAIN_OUT)
 
 #----------------------------Variáveis de Testes----------------------------------
 #Var Leitura
-TEST_LEITURA = Test/leitura_teste.c Src/leitura.c Src/mapa.c
+TEST_LEITURA = Test/leitura_teste.c Src/leitura.c Src/mapa.c Src/prog_dinamica.c
 TEST_OUT_LEITURA = Out/leitura_teste
 EXEC_TEST_LEITURA = ./$(TEST_OUT_LEITURA)
 

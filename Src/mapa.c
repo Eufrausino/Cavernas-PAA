@@ -34,7 +34,8 @@ ponteiro pra matriz     ponteiro pra linha       vetor de inteiros
 
 void CriaMapa(ApontadorMapa mapa, int linhas, int colunas)
 {   
-    *mapa = (char**)malloc(linhas * sizeof(char*)); // Aloca memória para as linhas
+    //era char
+    *mapa = (int**)malloc(linhas * sizeof(int*)); // Aloca memória para as linhas
     if (*mapa == NULL)
     {
         printf("Erro ao alocar memória para as linhas do mapa\n");
@@ -43,7 +44,7 @@ void CriaMapa(ApontadorMapa mapa, int linhas, int colunas)
 
     for (int i = 0; i < linhas; i++)
     {
-        (*mapa)[i] = (char*)malloc(colunas * sizeof(char)); // Aloca memória para as colunas
+        (*mapa)[i] = (int*)malloc(colunas * sizeof(int)); // Aloca memória para as colunas
         if ((*mapa)[i] == NULL)
         {
             printf("Erro ao alocar memória para as colunas do mapa\n");
@@ -104,5 +105,20 @@ void PreencherMapa(ApontadorMapa mapa, int posicacaoLinha, char valores[],int qt
     
 }
 
+void EncontraIeF(Mapa mapa, int linhas, int colunas, int *linhaF, int *colunaF, int *linhaI,int *colunaI){
+	for(int i = 0; i < linhas; i++){
+		for(int j = 0; j < colunas; j++){
+			if(mapa[i][j] == 'F'){
+				*linhaF = i;
+				*colunaF = j;
+				
+			}
+			if(mapa[i][j] == 'I'){
+				*linhaI = i;
+				*colunaI = j;
+			}
+		}
+	}
+}
 
 //FUTURAMENTE mostrar posição do aluno de Programação 
