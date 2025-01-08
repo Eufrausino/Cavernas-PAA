@@ -50,3 +50,23 @@ menu:
 pd:
 	$(CC) $(TEST_PROG_DINAMICA) -o $(TEST_OUT_PROG_DINAMICA)
 	$(EXEC_TEST_PROG_DINAMICA)
+
+
+
+
+
+#----------------------------Variáveis de Extra----------------------------------
+#Var Arquivos(FILE)
+CRIA_ARQUIVO = Src/criador.c Src/arquivo.c Src/mapa.c
+SAIDA_CRIA_ARQUIVO = Out/criador
+EXEC_CRIA_ARQUIVO = ./$(SAIDA_CRIA_ARQUIVO)
+
+NOME ?= mapaCriado
+LINHA ?= 10
+COLUNA ?= 10
+VIDA ?= 100
+#-----------------------------Rules Extras----------------------------------------------
+
+make criarArquivo:
+	$(CC) $(CRIA_ARQUIVO) -o $(SAIDA_CRIA_ARQUIVO)
+	$(EXEC_CRIA_ARQUIVO) $(NOME) $(LINHA) $(COLUNA) $(VIDA)
