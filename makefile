@@ -1,12 +1,10 @@
-#QUANDO CRIAREM MAIS MUDULOS, É  SO ADICIONAR NA LINHA DO < MAIN_SCR > O QUE TIVER CRIADO
-
 #---------------------------Variáveis da Main------------------------------------
 CC = gcc
 MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c 
 MAIN_OUT = Out/exe
 EXEC_MAIN = ./$(MAIN_OUT)
-#quando coloco ?= defino um valor padrão, caso o usuário não coloque nada
 MAPA ?= mapa.txt 
+
 
 #----------------------------Variáveis de Testes----------------------------------
 #Var Arquivos(FILE)
@@ -33,10 +31,10 @@ run: compile
 	$(EXEC_MAIN) $(MAPA)
 
 all: compile run
-
-# Limpa os arquivos de saída
+/
 clean:
 	rm -f $(MAIN_OUT) Out/*.txt
+
 
 #-----------------------------Testes----------------------------------------------
 files:
@@ -52,9 +50,6 @@ pd:
 	$(EXEC_TEST_PROG_DINAMICA)
 
 
-
-
-
 #----------------------------Variáveis de Extra----------------------------------
 #Var Arquivos(FILE)
 CRIA_ARQUIVO = Src/criador.c Src/arquivo.c Src/mapa.c
@@ -65,6 +60,8 @@ NOME ?= mapaCriado
 LINHA ?= 10
 COLUNA ?= 10
 VIDA ?= 100
+
+
 #-----------------------------Rules Extras----------------------------------------------
 
 make criarArquivo:
