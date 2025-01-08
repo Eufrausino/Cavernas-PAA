@@ -9,14 +9,11 @@
  * Histórico de versões:
  *    - v1.0 (gabriel)- 15/11/2024: criado cabeçalho de funçoes criar mapa e apagar mapa
  *    - v1.1 (gabriel)- 16/11/2014: criada cabeçalho de funções mostrar mapa e preencher mapa
- *    - v1.2 (matheus)- 20/11/2024: criado função de leitura de arquivo para o labirinto
  * 
  * Dependências:
  *    - stdio.h
  *    - stdlib.h
- *    - coordenadas.h
- *    - estudante.h
- *    - utilites.h
+ *    - time.h
  *     
  * 
  * Observações:
@@ -39,6 +36,5 @@ void CriaMapa(ApontadorMapa mapa, int linhas, int colunas);
 void ApagaMapa(ApontadorMapa mapa, int linhas);
 void MostrarMapa(Mapa mapa, int linhas, int colunas);
 void PreencherMapa(ApontadorMapa mapa, int posicacaoLinha, char valores[],int qtdColunas);
-
 
 #endif

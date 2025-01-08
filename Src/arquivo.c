@@ -1,13 +1,14 @@
 /**************************************************************
- * Nome do arquivo: leitura.c
+ * Nome do arquivo: arquivo.c
  * Projeto: Caverna-PAA
- * Descrição: definições de funcionalidades para ler o Arquivo de acordo com as 
+ * Descrição: definições de funcionalidades para lidar com arquivos
  * 
  * Autor(es): Gabriel de Pádua 
  * Data de criação: 04/01/2025
  * 
  * Histórico de versões:
- *    - v1.0 (gabriel)- 15/11/2024: criada função lerArquivo
+ *    - v1.0 (gabriel)- 04/01/2025: criada função lerArquivo
+ *    - v1.0 (matheus)- 06/01/2025: criada função gerarArquivo
  * 
  * Dependências:
  *    - mapa.h
@@ -15,7 +16,7 @@
  * Observações:
  *    - 
  **************************************************************/
-#include "../Headers/leitura.h"
+#include "../Headers/arquivo.h"
 
 void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, ApontadorMapa mapa) {
     FILE* arquivo = fopen(nomeArquivo, "r");
@@ -45,6 +46,14 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
                 // Verificar se o valor é um caractere ou número
                 if (token[0] == 'F' || token[0] == 'I') {
                     (*mapa)[i][coluna] = token[0]; // Armazenar caracteres
+                    
+                    if (token[0] == 'F') {
+                        informacoes->linhaF = i;
+                        informacoes->colunaF = coluna;
+                    } else if (token[0] == 'I') {
+                        informacoes->linhaI = i;
+                        informacoes->colunaI = coluna;
+                    }
                 } else {
                     (*mapa)[i][coluna] = atoi(token); // Converter strings numéricas em inteiros
                 }
@@ -70,4 +79,51 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
     // }
 
     printf("Mapa lido com sucesso!\n");
+}
+
+void gerarArquivo(const string nomeArquivo,int linhas, int colunas, int vidaInicial) {
+    
+    //calculei a memoria necessaria tanto dos valores literais quanto do nome do arquivo
+    string caminhoArquivo = (string) malloc( strlen("Lib/") + strlen(nomeArquivo) + strlen(".txt") + 1);
+    strcpy(caminhoArquivo, "Lib/");
+    strcat(caminhoArquivo, nomeArquivo);
+    strcat(caminhoArquivo, ".txt");
+
+    FILE* arquivo = fopen(caminhoArquivo, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo!\n");
+        exit(1);
+    }
+
+    fprintf(arquivo, "%d %d %d\n", linhas, colunas, vidaInicial);
+
+    // Possíveis valores para as células
+    int valores[] = {0, -20, 20, -10, 10};
+    int tamanhoValores = sizeof(valores) / sizeof(valores[0]);
+
+    srand(time(NULL)); // semente para números aleatórios
+
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            if (i == 0 && j == 0) {
+                fprintf(arquivo, "F "); 
+            } else if (i == linhas - 1 && j == colunas - 1) {
+                fprintf(arquivo, "I "); 
+            } else {
+                
+                int valorAleatorio = valores[rand() % tamanhoValores];
+
+                if (valorAleatorio > 0) {
+                    fprintf(arquivo, "+%d ", valorAleatorio);
+                } else {
+                    fprintf(arquivo, "%d ", valorAleatorio);
+                }
+                
+            }
+        }
+        fprintf(arquivo, "\n");
+    }
+
+    fclose(arquivo);
+    printf("Mapa gerado com sucesso em: %s\n", caminhoArquivo);
 }

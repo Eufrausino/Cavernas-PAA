@@ -103,6 +103,3 @@ void PreencherMapa(ApontadorMapa mapa, int posicacaoLinha, char valores[],int qt
     }
     
 }
-
-
-//FUTURAMENTE mostrar posição do aluno de Programação 
