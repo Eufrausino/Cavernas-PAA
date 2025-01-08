@@ -2,10 +2,11 @@
 
 #---------------------------Variáveis da Main------------------------------------
 CC = gcc
-MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c Src/menu.c
+MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c 
 MAIN_OUT = Out/exe
 EXEC_MAIN = ./$(MAIN_OUT)
-
+#quando coloco ?= defino um valor padrão, caso o usuário não coloque nada
+MAPA ?= mapa.txt 
 
 #----------------------------Variáveis de Testes----------------------------------
 #Var Arquivos(FILE)
@@ -28,11 +29,14 @@ EXEC_TEST_MENU = ./$(TEST_OUT_MENU)
 compile:
 	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
 
-run:
-	$(EXEC_MAIN)
+run: compile
+	$(EXEC_MAIN) $(MAPA)
 
 all: compile run
 
+# Limpa os arquivos de saída
+clean:
+	rm -f $(MAIN_OUT) Out/*.txt
 
 #-----------------------------Testes----------------------------------------------
 files:

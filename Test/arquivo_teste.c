@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
     // printf("Digite nome do arquivo: ");
     // scanf("%s", nomeArquivo);
 
-    gerarArquivo("foi",8, 8, 20);
+    gerarArquivo("foi3",8, 9, 20);
 
     return 0;
 }
