@@ -46,15 +46,16 @@ struct celulaProgD maiorCelula(struct celulaProgD valor1, struct celulaProgD val
 }
 
 
+
 void calcularSubproblemas(struct celulaProgD **progD, Mapa mapa, informacoes inf, int linhaF, int colunaF, int linhaI, int colunaI){
 	//progD[linhaI][colunaI].pv = inf.HP; // posi de I
-	//printf("AMEIXA I: %d\n", inf.HP);
+	printf("I: %d\n\n", inf.HP);
 	progD[linhaI][colunaI].letra = 'I';
 	progD[linhaF][colunaF].pv = 0;
 	progD[linhaF][colunaF].letra = 'F';
 	int i, j;
-	for(i = inf.linhas - 1; i >= 0; i--){
-		for(j = inf.colunas - 1; j >= colunaF; j--){
+	for(i = linhaI; i >= linhaF; i--){
+		for(j = colunaI; j >= colunaF; j--){ //verificar colunaI ou inf.colunas
 			if(i == linhaI){ //se for a ultima linha do labirinto!
 				if(progD[i][j].letra == 'I'){
 					progD[i][j].pv = inf.HP + progD[i][j].pv;
@@ -69,29 +70,31 @@ void calcularSubproblemas(struct celulaProgD **progD, Mapa mapa, informacoes inf
 					//printf("pv: %d\n ", progD[i][j].pv );
 				}
 			}
-			else if(j == inf.colunas - 1){
+			else if(j == inf.colunas - 1){ // se for a ultima coluna do labirinto
 				if(progD[i][j].letra == 'F'){
 					progD[i][j].pv = 0 + progD[i+1][j].pv;
 					break;
 				}
+				else{
 				progD[i][j].pv = mapa[i][j] + progD[i+1][j].pv;
-				//printf("pv: %d\n ", progD[i][j].pv );
+				//printf("pv: %d\n ", progD[i][j].pv );	
+				}
 			}
-			else{
+			else{ // qualquer outra célula do labirinto
 				if(progD[i][j].letra == 'F'){
 					progD[i][j].pv = 0 + maiorValor(progD[i+1][j].pv, progD[i][j+1].pv);
 					break;
 				}
 				progD[i][j].pv = mapa[i][j] + maiorValor(progD[i+1][j].pv, progD[i][j+1].pv);
 				//printf("pv: %d\n ", progD[i][j].pv );
-			}
-		//printf("pv: %d\n ", progD[i][j].pv );
-		
+			}		
 		}
 		if(progD[i][j].letra == 'F') break;
 	}
-	//printf("UVA PV:%d\n", progD[linhaF][colunaF].pv);
+	printf("PV:%d\n", progD[linhaF][colunaF].pv);
+	//printf("cont: %d", cont);
 }
+
 
 int verificaPontosDeVidaFinal(struct celulaProgD **progD, int linhaF, int colunaF){
 	//linhaF e colunaF são as coordenadas onde se enconta F
@@ -107,39 +110,65 @@ int verificaPontosDeVidaFinal(struct celulaProgD **progD, int linhaF, int coluna
 	}
 }
 
-
-
 void constroiCaminho(struct celulaProgD **progD, informacoes inf, int linhaF, int colunaF, int linhaI, int colunaI){
-	int totalPontosDeVida = verificaPontosDeVidaFinal(progD, linhaF, colunaF);
 
 	FILE* resultado;
 	resultado = fopen("Out/resultado.txt", "w");
-	if(resultado == NULL)
-	{
+	if(resultado == NULL){
 		printf("Arquivo inexistente!\n");
 		exit(1);
 	}
-
-	else
-	{
-		if(totalPontosDeVida > 0){ //indica que o problema tem solução
-			struct celulaProgD maior;
-			for(int i = inf.linhas - 1; i >= linhaF; i--){
-				for(int j = inf.colunas - 1; j >= colunaF; j--){
-					
-					if(i == linhaI && j == colunaI){ //se for a posição do I
+	else{
+		struct celulaProgD maior;
+		int i, j;
+		for(i = linhaI; i >= linhaF; i--){
+			for(j = colunaI; j >= colunaF; j--){
+				
+				if(i == linhaI && j == colunaI){ //se for a posição do I
+					if(progD[i][j].pv > 0){
+						//printf("%d %d\n", i, j);
 						fprintf(resultado,"%d %d\n", i, j);
 						maior = (maiorCelula(progD[i-1][j], progD[i][j-1]));
 					}
-					
-					else if(i == maior.posiX && j == maior.posiY){
+					else{
+						//printf("Vc já começou morto, meu querido!");
+						freopen("Out/resultado.txt", "w", resultado); //reabre o arquivo limpando seu conteúdo
+						fprintf(resultado, "impossível sair do labirinto!\n");
+						break;
+					}
+				}
+				else if(i == maior.posiX && j == maior.posiY){
+					if(maior.pv > 0){ //verifica se há pontos de vida
+						//printf("%d %d\n", i , j);
+						fprintf(resultado,"%d %d\n", i, j);
+					}
+					else{
+						//printf("Vish! vc morreu! :(");
+						freopen("Out/resultado.txt", "w", resultado);
+						fprintf(resultado, "impossível sair do labirinto!\n");
+						break;
+					}
+					if((i == linhaF) && (maior.letra != 'F')){ //impede o acesso de um elemento fora da matriz que estamos analisando.
+						maior = progD[i][j-1];
+					}
+					else if(j == colunaF && (maior.letra != 'F')){ //impede o acesso de um elemento fora da matriz que estamos analizando.
+						maior = progD[i-1][j];
+					}
+					else if((i == linhaF) && (j == colunaF) && ((maior.letra = 'F'))){ // apenas para F, evita acesso fora da matriz
+						maior = progD[i][j];
+					}
+					else{
 						maior = (maiorCelula(progD[i-1][j], progD[i][j-1]));
-						fprintf(resultado,"%d %d\n", i , j);
 					}
 				}
 			}
+			if(maior.pv <= 0 || progD[linhaI][colunaI].pv <=0){
+				break;
+			}
 		}
-		else fprintf(resultado, "impossível\n");
+
 	}
-	fclose(resultado);
+	fclose(resultado);	
 }
+//}
+

@@ -2,7 +2,7 @@
 
 #---------------------------Variáveis da Main------------------------------------
 CC = gcc
-MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c Src/menu.c
+MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c
 MAIN_OUT = Out/exe
 EXEC_MAIN = ./$(MAIN_OUT)
 
