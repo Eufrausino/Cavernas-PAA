@@ -19,43 +19,30 @@ int main(int argc, char* argv[]) {
     strcat(camihhoEntrada, argv[1]);
     strcat(camihhoEntrada, ".txt");
     
-    //nome da saida tem q ser sempre assim: 
-    const char* caminhoSaida = "resultado.txt";
-
-
-    //teste
-    processarMapa(camihhoEntrada, caminhoSaida);
-    //teste 
+    Mapa mapa;
+    informacoes info;
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    int linhaF, colunaF, linhaI, colunaI;
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    lerArquivo(camihhoEntrada,&info,&mapa);
     
-    printf("Resultado salvo em: %s\n", caminhoSaida);
+    MostrarMapa(mapa,info.linhas,info.colunas);
+
+    printf("\n\n%d ",mapa[0][0]);
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    printf("\n\nF: %d %d\nI: %d %d\n\n",info.linhaF, info.colunaF, info.linhaI, info.colunaI);
+
+    struct celulaProgD **pd = fazMatrizProgDinamica(info);
+    calcularSubproblemas(pd, mapa, info,  info.linhaF, info.colunaF, info.linhaI, info.colunaI);
+    //printf("LINHA F: %d\n", pd[1][0]);
+    constroiCaminho(pd, info, info.linhaF, info.colunaF, info.linhaI, info.colunaI);  
+
+    printf("Resultado de bom!");
     return 0;
 }
 
 
-void processarMapa(const char* caminhoEntrada, const char* caminhoSaida) {
-    // Abre o arquivo de entrada
-    FILE* arquivoEntrada = fopen(caminhoEntrada, "r");
-    if (arquivoEntrada == NULL) {
-        perror("Erro ao abrir arquivo de entrada");
-        exit(1);
-    }
 
-    // Cria o arquivo de saída
-    FILE* arquivoSaida = fopen(caminhoSaida, "w");
-    if (arquivoSaida == NULL) {
-        perror("Erro ao criar arquivo de saída");
-        fclose(arquivoEntrada);
-        exit(1);
-    }
-
-    char linha[256];
-    while (fgets(linha, sizeof(linha), arquivoEntrada)) {
-        // Apenas copia as linhas do mapa para o arquivo de saída
-        fprintf(arquivoSaida, "%s", linha);
-    }
-
-    fclose(arquivoEntrada);
-    fclose(arquivoSaida);
-}
 
 
