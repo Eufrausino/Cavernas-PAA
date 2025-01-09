@@ -170,5 +170,4 @@ void constroiCaminho(struct celulaProgD **progD, informacoes inf, int linhaF, in
 	}
 	fclose(resultado);	
 }
-//}
 
