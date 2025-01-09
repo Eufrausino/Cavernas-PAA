@@ -22,6 +22,10 @@ TEST_MENU = Test/menu_teste.c #colocar restante aquivos necessarios
 TEST_OUT_MENU = Out/menu_teste
 EXEC_TEST_MENU = ./$(TEST_OUT_MENU)
 
+#var Tempo de Execução
+TEST_TEMPO = Src/tempo_execucao.c Src/arquivo.c Src/mapa.c Src/progDinamica.c -o Out/tempo_execucao
+TEST_OUT_TEMPO = Out/tempo_execucao
+EXEC_TEST_TEMPO = ./$(TEST_OUT_TEMPO)
 
 #------------------------------Rules----------------------------------------------
 compile:
