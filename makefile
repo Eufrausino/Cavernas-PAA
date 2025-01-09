@@ -68,15 +68,15 @@ EXEC_NOVA_HEURISTICA = ./$(SAIDA_NOVA_HEURISTICA)
 
 #-----------------------------Rules Extras----------------------------------------------
 
-make criarArquivo:
+criarArquivo:
 	$(CC) $(CRIA_ARQUIVO) -o $(SAIDA_CRIA_ARQUIVO)
 	$(EXEC_CRIA_ARQUIVO) $(NOME) $(LINHA) $(COLUNA) $(VIDA)
 
-make tempoExecucao:
+tempoExecucao:
 	$(CC) $(TEMPO_EXECUCAO) -o $(SAIDA_TEMPO_EXECUCAO)
 	$(EXEC_TEMPO_EXECUCAO) $(MAPA)
 
-make novaHeuristica:
+novaHeuristica:
 	$(CC) $(NOVA_HEURISTICA) -o Out/novaHeuristica
 	$(EXEC_NOVA_HEURISTICA) $(MAPA)
 
