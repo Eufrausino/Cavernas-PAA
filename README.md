@@ -57,12 +57,27 @@ Atravez do Makefile podemos apenas digitar no terminal os comandos:
 **`make run MAPA=<nome_do_mapa>`**: execeturá o programa com o mapa defido. 
 
 **`make all`**: compilará e executará , podendo tambem colocar o mapa como argumento como comando. 
+
+---
 #### Comandos para Criar Arquivo:
 **`make criarArquivo`**:  compilará e executará um Programa que cria um arquivo de entrada, onde se nao esqpecificado suas varieveis terá-las defindas como defalt: NOME= mapaCriado, LINHA= 10,COLUNA=10 ,VIDA= 100.
 
 **`make criarArquivo NOME=<string> LINHA=<int>,COLUNA=<int> ,VIDA=<int>`**: compilará e executará, criando um arquivo dentro da pasta Lib/ com as variaveis definidas em linha de comando. 
 
-#### Comandos de Teste Modular:
+---
+#### Comandos para Medir tempo de Execução:
+**`make tempoExecucao`**:  compilará e executará um Programa que mede o tempo de execução, onde quando não especificado as variaveis em linha de comando terá mapa.txt (mapa de teste dado na documentação) como entrada 
+
+**`make tempoExecucao MAPA=<nome_do_mapa>`**: compilará e executará um Programa que mede o tempo de execução, onde pode ser passado o nome do mapa como entrada.
+
+---
+#### Comandos para Executar Programção com Heuritica do grupo:
+**`make novaHeuristica`**:  compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde quando não especificado as variaveis em linha de comando terá mapa.txt (mapa de teste dado na documentação) como entrada.
+
+**`make tempoExecucao MAPA=<nome_do_mapa>`**: compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde pode ser passado o nome do mapa como entrada.
+
+
+### Comandos de Teste Modular:
 
 Desenvolvemos todo Software de formula modular, portanto podemos compilar e executa-los de maneira isolada e com "inteface" para testes, sendo os comando seguintes os necessários:
 
@@ -75,16 +90,20 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 ├── Headers/  
 │   ├── arquivo.h  
 │   ├── mapa.h  
-│   └── progDinamica.h  
+│   ├── novaHeuristica.h 
+│   ├── progDinamica.h  
+│   └── tempoExecucao.h  
 ├── Src/  
+│   ├── arquivo.c 
 │   ├── criador.c  
-│   ├── arquivo.c  
+│   ├── main.c  
 │   ├── mapa.c  
-│   └── progDinamica.c  
+│   ├── novaHeuristica.c 
+│   ├── progDinamica.c 
+│   └── tempoExecucao.c  
 ├── Test/  
 │   ├── arquivo_teste.c  
-│   ├── prog_dinamica_teste.c  
-│   └── menu_teste.c  
+│   └── prog_dinamica_teste.c   
 ├── Lib/  
 │   └── (mapas em formato .txt)  
 ├── Out/  

@@ -18,7 +18,7 @@ TEST_OUT_PROG_DINAMICA = Out/progDinam_teste
 EXEC_TEST_PROG_DINAMICA = ./$(TEST_OUT_PROG_DINAMICA)
 
 
-#------------------------------Rules----------------------------------------------
+#------------------------------Rules Principais----------------------------------------------
 compile:
 	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
 
@@ -44,7 +44,7 @@ pd:
 
 
 #----------------------------Variáveis de Extra----------------------------------
-#Var Arquivos(FILE)
+#Criar Arquivo
 CRIA_ARQUIVO = Src/criador.c Src/arquivo.c Src/mapa.c
 SAIDA_CRIA_ARQUIVO = Out/criador
 EXEC_CRIA_ARQUIVO = ./$(SAIDA_CRIA_ARQUIVO)
@@ -54,9 +54,30 @@ LINHA ?= 10
 COLUNA ?= 10
 VIDA ?= 100
 
+#ver Tempo de Execução
+TEMPO_EXECUCAO = Src/tempoExecucao.c Src/arquivo.c Src/mapa.c Src/progDinamica.c
+SAIDA_TEMPO_EXECUCAO = Out/tempo_execucao
+EXEC_TEMPO_EXECUCAO = ./$(SAIDA_TEMPO_EXECUCAO)
+#vou usar a variavel mapa que ja usa no programa principal 
+
+#Nova Heuristica
+NOVA_HEURISTICA = Src/novaHeuristica.c Src/arquivo.c Src/mapa.c Src/progDinamica.c
+SAIDA_NOVA_HEURISTICA = Out/novaHeuristica
+EXEC_NOVA_HEURISTICA = ./$(SAIDA_NOVA_HEURISTICA)
+#vou usar a variavel mapa que ja usa no programa principal
 
 #-----------------------------Rules Extras----------------------------------------------
 
 make criarArquivo:
 	$(CC) $(CRIA_ARQUIVO) -o $(SAIDA_CRIA_ARQUIVO)
 	$(EXEC_CRIA_ARQUIVO) $(NOME) $(LINHA) $(COLUNA) $(VIDA)
+
+make tempoExecucao:
+	$(CC) $(TEMPO_EXECUCAO) -o $(SAIDA_TEMPO_EXECUCAO)
+	$(EXEC_TEMPO_EXECUCAO) $(MAPA)
+
+make novaHeuristica:
+	$(CC) $(NOVA_HEURISTICA) -o Out/novaHeuristica
+	$(EXEC_NOVA_HEURISTICA) $(MAPA)
+
+
