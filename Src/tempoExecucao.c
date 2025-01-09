@@ -3,7 +3,7 @@
 int main(int argc, char const *argv[])
 {
 
-    if (argc != 2) {
+    if (argc != 2){
         fprintf(stderr, "Use: %s MAPA=<nome_do_arquivo_mapa>\n", argv[0]);
         return 1;
     }
@@ -12,10 +12,25 @@ int main(int argc, char const *argv[])
     strcat(camihhoEntrada, argv[1]);
     strcat(camihhoEntrada, ".txt");
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    //programa pra calcular o tempo normalmente ai em baxo: 
-    //faz o rodar o tempo com o caminho de entrada, pq ai vai funcionar medir o tempo com qualquer mapa: 
-    
+    Mapa mapa;
+    informacoes info;
+    struct celulaProgD **pd = fazMatrizProgDinamica(info);
+
+    lerArquivo(camihhoEntrada,&info,&mapa);
+
+    clock_t inicio = clock();
+    calcularSubproblemas(pd, mapa, info,  info.linhaF, info.colunaF, info.linhaI, info.colunaI);
+    constroiCaminho(pd, info, info.linhaF, info.colunaF, info.linhaI, info.colunaI);
+    clock_t fim = clock();
+
+    double tempoExecucao = (double)(fim - inicio) / CLOCKS_PER_SEC; 
+
+    printf("\n\n");
+    MostrarMapa(mapa,info.linhas,info.colunas);
+    printf("\n\n");
+    printf("Dimensoes da matriz: %d x %d\n", info.linhas, info.colunas);
+    printf("Tempo de execucao da Programação Dinamica: %.6f segundos\n", tempoExecucao);
+    printf("\n\n");
 
 
 
