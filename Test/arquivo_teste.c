@@ -42,6 +42,7 @@ int main(int argc, char const *argv[])
 
 //    gerarArquivo("foi",8, 8, 20);
     gerarArquivo(nomeArquivo,qtdLinhas,qtdColunas,vidaInicial);
+    //gerarArquivo("foi3",8, 9, 20);
 
     return 0;
 }
