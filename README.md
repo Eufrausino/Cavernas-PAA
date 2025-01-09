@@ -76,7 +76,7 @@ Atravez do Makefile podemos apenas digitar no terminal os comandos:
 
 **`make tempoExecucao MAPA=<nome_do_mapa>`**: compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde pode ser passado o nome do mapa como entrada.
 
-
+---
 ### Comandos de Teste Modular:
 
 Desenvolvemos todo Software de formula modular, portanto podemos compilar e executa-los de maneira isolada e com "inteface" para testes, sendo os comando seguintes os necessários:
@@ -90,16 +90,16 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 ├── Headers/  
 │   ├── arquivo.h  
 │   ├── mapa.h  
-│   ├── novaHeuristica.h 
+│   ├── novaHeuristica.h  
 │   ├── progDinamica.h  
 │   └── tempoExecucao.h  
 ├── Src/  
-│   ├── arquivo.c 
+│   ├── arquivo.c  
 │   ├── criador.c  
 │   ├── main.c  
 │   ├── mapa.c  
-│   ├── novaHeuristica.c 
-│   ├── progDinamica.c 
+│   ├── novaHeuristica.c  
+│   ├── progDinamica.c   
 │   └── tempoExecucao.c  
 ├── Test/  
 │   ├── arquivo_teste.c  
