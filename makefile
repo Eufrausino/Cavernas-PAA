@@ -3,7 +3,7 @@ CC = gcc
 MAIN_SRC = Src/main.c Src/arquivo.c Src/mapa.c Src/progDinamica.c 
 MAIN_OUT = Out/exe
 EXEC_MAIN = ./$(MAIN_OUT)
-MAPA ?= mapa.txt 
+MAPA ?= mapa
 
 
 #----------------------------Variáveis de Testes----------------------------------
@@ -17,21 +17,17 @@ TEST_PROG_DINAMICA =  Test/prog_dinamica_teste.c  Src/progDinamica.c Src/arquivo
 TEST_OUT_PROG_DINAMICA = Out/progDinam_teste
 EXEC_TEST_PROG_DINAMICA = ./$(TEST_OUT_PROG_DINAMICA)
 
-#var menu
-TEST_MENU = Test/menu_teste.c #colocar restante aquivos necessarios
-TEST_OUT_MENU = Out/menu_teste
-EXEC_TEST_MENU = ./$(TEST_OUT_MENU)
-
 
 #------------------------------Rules----------------------------------------------
 compile:
 	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
 
-run: compile
+
+run: 
 	$(EXEC_MAIN) $(MAPA)
 
 all: compile run
-/
+
 clean:
 	rm -f $(MAIN_OUT) Out/*.txt
 
@@ -41,9 +37,6 @@ files:
 	$(CC) $(TEST_ARQUIVO) -o $(TEST_OUT_ARQUIVO)
 	$(EXEC_TEST_ARQUIVO)
 
-menu:
-	$(CC) $(TEST_MENU) -o $(TEST_OUT_MENU)
-	$(EXEC_TEST_MENU)
 
 pd:
 	$(CC) $(TEST_PROG_DINAMICA) -o $(TEST_OUT_PROG_DINAMICA)
