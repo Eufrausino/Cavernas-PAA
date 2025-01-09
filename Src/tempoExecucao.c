@@ -14,6 +14,8 @@ int main(int argc, char const *argv[])
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //programa pra calcular o tempo normalmente ai em baxo: 
+    //faz o rodar o tempo com o caminho de entrada, pq ai vai funcionar medir o tempo com qualquer mapa: 
+    
 
 
 
