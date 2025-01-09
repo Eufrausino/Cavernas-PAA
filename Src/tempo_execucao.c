@@ -27,7 +27,11 @@ int main(int argc, char* argv[]) {
     clock_t fim = clock();  // Marca o fim
 
     double tempoExecucao = (double)(fim - inicio) / CLOCKS_PER_SEC; // Calcula em segundos
-    printf("Tempo de execução: %.6f segundos\n", tempoExecucao);
+
+    printf("\n\n");
+    printf("Dimensoes da matriz: %d x %d\n", info.linhas, info.colunas);
+    printf("Tempo de execucao: %.6f segundos\n", tempoExecucao);
+    printf("\n\n");
 
     free(caminhoEntrada);
     return 0;
