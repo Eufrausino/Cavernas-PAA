@@ -52,15 +52,15 @@ Atravez do Makefile podemos apenas digitar no terminal os comandos:
 #### Comandos pra Main:
 **`make compile`**: compila o programa principal
 
-**`make run`**: executa o programa principal, porem se executado sem a definição das variaveis, tal executará com as variaveis de defout ( sendo essas as padroẽs que executarão o arquivo de exemplo)
+**`make run`**: executa o programa principal, porém se executado sem a definição das variáveis, tal executará com as variaveis default ( sendo essas as padroẽs que executarão o arquivo de exemplo)
 
-**`make run MAPA=<nome_do_mapa>`**: execeturá o programa com o mapa defido. 
+**`make run MAPA=<nome_do_mapa>`**: execeturá o programa com o mapa definido. 
 
-**`make all`**: compilará e executará , podendo tambem colocar o mapa como argumento como comando. 
+**`make all`**: compilará e executará , podendo também colocar o mapa como argumento como comando. 
 
 ---
 #### Comandos para Criar Arquivo:
-**`make criarArquivo`**:  compilará e executará um Programa que cria um arquivo de entrada, onde se nao esqpecificado suas varieveis terá-las defindas como defalt: NOME= mapaCriado, LINHA= 10,COLUNA=10 ,VIDA= 100.
+**`make criarArquivo`**:  compilará e executará um Programa que cria um arquivo de entrada, onde se nao especificado suas variáveis terá-las defindas como default: NOME= mapaCriado, LINHA= 10,COLUNA=10 ,VIDA= 100.
 
 **`make criarArquivo NOME=<string> LINHA=<int>,COLUNA=<int> ,VIDA=<int>`**: compilará e executará, criando um arquivo dentro da pasta Lib/ com as variaveis definidas em linha de comando. 
 
