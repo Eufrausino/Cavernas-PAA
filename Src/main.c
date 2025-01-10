@@ -13,9 +13,9 @@ int main(int argc, char* argv[]) {
     
     Mapa mapa;
     informacoes info;
-    struct celulaProgD **pd = fazMatrizProgDinamica(info);
 
     lerArquivo(camihhoEntrada,&info,&mapa);
+    struct celulaProgD **pd = fazMatrizProgDinamica(info);
     calcularSubproblemas(pd, mapa, info,  info.linhaF, info.colunaF, info.linhaI, info.colunaI);
     constroiCaminho(pd, info, info.linhaF, info.colunaF, info.linhaI, info.colunaI);  
 

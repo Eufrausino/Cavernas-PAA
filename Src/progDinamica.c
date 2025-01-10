@@ -49,7 +49,7 @@ struct celulaProgD maiorCelula(struct celulaProgD valor1, struct celulaProgD val
 
 void calcularSubproblemas(struct celulaProgD **progD, Mapa mapa, informacoes inf, int linhaF, int colunaF, int linhaI, int colunaI){
 	//progD[linhaI][colunaI].pv = inf.HP; // posi de I
-	printf("I: %d\n\n", inf.HP);
+	//printf("I: %d\n\n", inf.HP);
 	progD[linhaI][colunaI].letra = 'I';
 	progD[linhaF][colunaF].pv = 0;
 	progD[linhaF][colunaF].letra = 'F';
@@ -91,21 +91,21 @@ void calcularSubproblemas(struct celulaProgD **progD, Mapa mapa, informacoes inf
 		}
 		if(progD[i][j].letra == 'F') break;
 	}
-	printf("PV:%d\n", progD[linhaF][colunaF].pv);
+	//printf("PV:%d\n", progD[linhaF][colunaF].pv);
 	//printf("cont: %d", cont);
 }
 
 
 int verificaPontosDeVidaFinal(struct celulaProgD **progD, int linhaF, int colunaF){
 	//linhaF e colunaF são as coordenadas onde se enconta F
-	printf("PV:%d\n", progD[linhaF][colunaF].pv);
+	//printf("PV:%d\n", progD[linhaF][colunaF].pv);
 	if(progD[linhaF][colunaF].pv <= 0){
-		printf("Não eh possivel sair do labirinto! :(\n");
+		//printf("Não eh possivel sair do labirinto! :(\n");
 		
 		return -1;
 	}
 	else{
-		printf("Parabéns! Voce saiu do labirinto com %d pontos!\n",progD[linhaF][colunaF].pv);
+		//printf("Parabéns! Voce saiu do labirinto com %d pontos!\n",progD[linhaF][colunaF].pv);
 		return progD[linhaF][colunaF].pv;
 	}
 }

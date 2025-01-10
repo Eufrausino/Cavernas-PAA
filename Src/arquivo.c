@@ -73,12 +73,6 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
 
     fclose(arquivo);
 
-    // Exibir o mapa
-    // if (mapa != NULL) {
-    //     MostrarMapa(*mapa, informacoes->linhas, informacoes->colunas);
-    // }
-
-    printf("Mapa lido com sucesso!\n");
 }
 
 void gerarArquivo(const string nomeArquivo,int linhas, int colunas, int vidaInicial) {

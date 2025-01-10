@@ -14,9 +14,9 @@ int main(int argc, char const *argv[])
 
     Mapa mapa;
     informacoes info;
-    struct celulaProgD **pd = fazMatrizProgDinamica(info);
 
     lerArquivo(camihhoEntrada,&info,&mapa);
+    struct celulaProgD **pd = fazMatrizProgDinamica(info);
 
     clock_t inicio = clock();
     calcularSubproblemas(pd, mapa, info,  info.linhaF, info.colunaF, info.linhaI, info.colunaI);
