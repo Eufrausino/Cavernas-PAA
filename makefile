@@ -60,7 +60,7 @@ EXEC_TEMPO_EXECUCAO = ./$(SAIDA_TEMPO_EXECUCAO)
 #vou usar a variavel mapa que ja usa no programa principal 
 
 #Nova Heuristica
-NOVA_HEURISTICA = Src/novaHeuristica.c Src/arquivo.c Src/mapa.c Src/progDinamica.c
+NOVA_HEURISTICA = Src/novaHeuristica.c Src/arquivo.c Src/mapa.c Src/progDinamica.c Src/listaDuplamenteEncadeada.c
 SAIDA_NOVA_HEURISTICA = Out/novaHeuristica
 EXEC_NOVA_HEURISTICA = ./$(SAIDA_NOVA_HEURISTICA)
 #vou usar a variavel mapa que ja usa no programa principal
