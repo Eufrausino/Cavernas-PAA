@@ -83,7 +83,7 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 
 **`make files`**: Para ter acesso ao modulo de Arquivos
 
-**`make pg`**: Para ter acesso ao modulo de Programação Dinâmica
+**`make pd`**: Para ter acesso ao modulo de Programação Dinâmica
 
 ## Estrutura do Projeto
 
