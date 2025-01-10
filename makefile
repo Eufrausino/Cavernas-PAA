@@ -5,6 +5,17 @@ MAIN_OUT = Out/exe
 EXEC_MAIN = ./$(MAIN_OUT)
 MAPA ?= mapa
 
+#------------------------------Rules Principais----------------------------------------------
+compile:
+	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
+
+
+run: 
+	$(EXEC_MAIN) $(MAPA)
+
+all: compile run
+
+
 
 #----------------------------Variáveis de Testes----------------------------------
 #Var Arquivos(FILE)
@@ -18,18 +29,6 @@ TEST_OUT_PROG_DINAMICA = Out/progDinam_teste
 EXEC_TEST_PROG_DINAMICA = ./$(TEST_OUT_PROG_DINAMICA)
 
 
-#------------------------------Rules Principais----------------------------------------------
-compile:
-	$(CC) $(MAIN_SRC) -o $(MAIN_OUT)
-
-
-run: 
-	$(EXEC_MAIN) $(MAPA)
-
-all: compile run
-
-clean:
-	rm -f $(MAIN_OUT) Out/*.txt
 
 
 #-----------------------------Testes----------------------------------------------
