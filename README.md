@@ -72,7 +72,7 @@ Atravez do Makefile podemos apenas digitar no terminal os comandos:
 
 ---
 #### Comandos para Executar Programção com Heuritica do grupo:
-**`make novaHeuristica`**:  compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde quando não especificado as variaveis em linha de comando terá mapa.txt (mapa de teste dado na documentação) como entrada.
+**`make novaHeuristica`**:  compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde quando não especificado as variaveis em linha de comando terá mapa.txt (mapa de teste dado na documentação) como entrada. Vale antentar-se que tal também cria um arquivo de saída, chamado <span style="color: green;">"resultado2"</span>.
 
 **`make tempoExecucao MAPA=<nome_do_mapa>`**: compilará e executará um Programa com a heuristica de programação dinamica desenvolvida pelo grupo, onde pode ser passado o nome do mapa como entrada.
 
@@ -89,6 +89,7 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 
 ├── Headers/  
 │   ├── arquivo.h  
+│   ├── listaDuplamenteEncadeada.h  
 │   ├── mapa.h  
 │   ├── novaHeuristica.h  
 │   ├── progDinamica.h  
@@ -96,6 +97,8 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 ├── Src/  
 │   ├── arquivo.c  
 │   ├── criador.c  
+│   ├── listaDuplamenteEncadeada.c   
+│   ├── Src/main_Heuristica.c  
 │   ├── main.c  
 │   ├── mapa.c  
 │   ├── novaHeuristica.c  
@@ -115,3 +118,4 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 ## Licença
 
 Nosso Software tem liceça MIT, ou seja ... podem copiar 
+
