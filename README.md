@@ -117,5 +117,5 @@ Desenvolvemos todo Software de formula modular, portanto podemos compilar e exec
 ---
 ## Licença
 
-Nosso Software tem liceça MIT, ou seja ... podem copiar 
+Nosso Software tem liceça MIT - Aberto
 
