@@ -4,9 +4,14 @@
 resultado melhorPosicao(Mapa mapa,posicao atual,int linhaFinal,int colunaFinal){
     
     resultado r;
+    
 
     //se tem como ir pra tres direçoes :
     if (atual.x > linhaFinal && atual.y > colunaFinal){
+
+        //se o valor que tiver na posiçao for um Baú, fica mais interessante ir para ele, tendo o  maior valor sempre
+        //se tiver um Baú, ele vai ter um valor de 66 em ASCII
+
         int a = mapa[atual.x-1][atual.y];//cima
         int b = mapa[atual.x][atual.y-1];//esquerda 
         int c = mapa[atual.x-1][atual.y-1];//noroeste
@@ -47,6 +52,7 @@ resultado melhorPosicao(Mapa mapa,posicao atual,int linhaFinal,int colunaFinal){
  
     }
 
+    //pode retonar valor ASCII de B 
     return r;
 }
 
@@ -60,7 +66,7 @@ ponteiroLista progamaçaoD(Mapa mapa,informacoes info,caminhando aluno){
 
  
     //vou fazer o trajeto enquanto a vida dele for positiva e X e Y forem diferentes do final
-    while(info.HP > 0 && aluno.pos.x != info.linhaF && aluno.pos.y != info.colunaF){
+    while(info.HP > 0 && (aluno.pos.x != info.linhaF || aluno.pos.y != info.colunaF)){
 
         proximaPosicao = melhorPosicao(mapa,aluno.pos,info.linhaF,info.colunaF);
 
@@ -70,9 +76,20 @@ ponteiroLista progamaçaoD(Mapa mapa,informacoes info,caminhando aluno){
         insereLista(lista,aluno.pos);
 
         //atualizar a vida do aluno
-        if (proximaPosicao.valor != 'F' && proximaPosicao.valor != 'I'){
-            info.HP += proximaPosicao.valor;
+        if (proximaPosicao.valor != 'F' && proximaPosicao.valor != 'I'|| proximaPosicao.valor != 'B'){
+            //info.HP += proximaPosicao.valor;
         }
+
+        if (proximaPosicao.valor == (int)'B'){//se a proxima posição for um Baú
+            int valorAleatorio = rand() % 2;
+            if (valorAleatorio == 0){
+                //info.HP -= 20;//poção de vida
+            }else{
+                //info.HP -= 10;// uma aranha venenosa
+            }
+            
+        }
+        
     }
 
     //verifica se ele morreu

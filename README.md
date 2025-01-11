@@ -62,7 +62,12 @@ Atravez do Makefile podemos apenas digitar no terminal os comandos:
 #### Comandos para Criar Arquivo:
 **`make criarArquivo`**:  compilará e executará um Programa que cria um arquivo de entrada, onde se nao especificado suas variáveis terá-las defindas como default: NOME= mapaCriado, LINHA= 10,COLUNA=10 ,VIDA= 100.
 
+
 **`make criarArquivo NOME=<string> LINHA=<int>,COLUNA=<int> ,VIDA=<int>`**: compilará e executará, criando um arquivo dentro da pasta Lib/ com as variaveis definidas em linha de comando. 
+
+**`make criarArquivoBau`**:  compilará e executará um Programa que cria um arquivo de entrada onde existirá baus que podem ter aranhas ou curas, onde se nao especificado suas variáveis terá-las defindas como default: NOME= mapaCriado, LINHA= 10,COLUNA=10 ,VIDA= 100.
+
+**`make criarArquivo NOME=<string> LINHA=<int>,COLUNA=<int> ,VIDA=<int> BAU<qualquer_int>`**: compilará e executará, criando um arquivo com baus dentro da pasta Lib/ com as variaveis definidas em linha de comando. 
 
 ---
 #### Comandos para Medir tempo de Execução:

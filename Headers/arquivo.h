@@ -55,5 +55,8 @@ typedef struct informacoesArquivo
 //------------------------Funções---------------------------
 void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, ApontadorMapa mapa);
 void gerarArquivo(const string nomeArquivo,int linhas, int colunas, int vidaInicial);
+int valorDaMatriz(int valorAleatorio);
+void gerarAquivosComArmadilhas(const string nomeArquivo,int linhas, int colunas, int vidaInicial);
+
 
 #endif

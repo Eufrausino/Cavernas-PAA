@@ -52,6 +52,7 @@ NOME ?= mapaCriado
 LINHA ?= 10
 COLUNA ?= 10
 VIDA ?= 100
+BAU ?= 1
 
 #ver Tempo de Execução
 TEMPO_EXECUCAO = Src/tempoExecucao.c Src/arquivo.c Src/mapa.c Src/progDinamica.c
@@ -70,6 +71,10 @@ EXEC_NOVA_HEURISTICA = ./$(SAIDA_NOVA_HEURISTICA)
 criarArquivo:
 	$(CC) $(CRIA_ARQUIVO) -o $(SAIDA_CRIA_ARQUIVO)
 	$(EXEC_CRIA_ARQUIVO) $(NOME) $(LINHA) $(COLUNA) $(VIDA)
+
+criarArquivoBau:
+	$(CC) $(CRIA_ARQUIVO) -o $(SAIDA_CRIA_ARQUIVO)
+	$(EXEC_CRIA_ARQUIVO) $(NOME) $(LINHA) $(COLUNA) $(VIDA) $(BAU)
 
 tempoExecucao:
 	$(CC) $(TEMPO_EXECUCAO) -o $(SAIDA_TEMPO_EXECUCAO)

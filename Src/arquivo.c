@@ -44,7 +44,7 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
             char* token = strtok(linha, " ");
             while (token != NULL) {
                 // Verificar se o valor é um caractere ou número
-                if (token[0] == 'F' || token[0] == 'I') {
+                if (token[0] == 'F' || token[0] == 'I' || token[0] == 'B') {
                     (*mapa)[i][coluna] = token[0]; // Armazenar caracteres
                     
                     if (token[0] == 'F') {
@@ -53,7 +53,9 @@ void lerArquivo(const char* nomeArquivo, ponteiroInformçaoes informacoes, Apont
                     } else if (token[0] == 'I') {
                         informacoes->linhaI = i;
                         informacoes->colunaI = coluna;
-                    }
+                    } //else if (token[0] == 'B') {
+                    //     informacoes->HP += 10; // Baú
+                    // }
                 } else {
                     (*mapa)[i][coluna] = atoi(token); // Converter strings numéricas em inteiros
                 }
@@ -92,7 +94,7 @@ void gerarArquivo(const string nomeArquivo,int linhas, int colunas, int vidaInic
     fprintf(arquivo, "%d %d %d\n", linhas, colunas, vidaInicial);
 
     // Possíveis valores para as células
-    int valores[] = {0, -20, 20, -10, 10};
+    int valores[] = {0, 20, -10, 10};
     int tamanhoValores = sizeof(valores) / sizeof(valores[0]);
 
     srand(time(NULL)); // semente para números aleatórios
@@ -120,4 +122,75 @@ void gerarArquivo(const string nomeArquivo,int linhas, int colunas, int vidaInic
 
     fclose(arquivo);
     printf("Mapa gerado com sucesso em: %s\n", caminhoArquivo);
+}
+
+int valorDaMatriz(int valorAleatorio){
+    switch (valorAleatorio)
+    {
+    case 0:
+        return 0;
+        break;
+    case 1:
+        return -10;
+        break;
+    case 2:
+        return 20;
+        break;
+    case 3:
+        return (int)'B';
+    case 4:
+        return -20;
+        break;
+   
+    default:
+        return 0;
+        break;
+    }
+   
+}
+
+void gerarAquivosComArmadilhas(const string nomeArquivo,int linhas, int colunas, int vidaInicial){
+
+    string caminhoArquivo = (string) malloc( strlen("Lib/") + strlen(nomeArquivo) + strlen(".txt") + 1);
+    strcpy(caminhoArquivo, "Lib/");
+    strcat(caminhoArquivo, nomeArquivo);
+    strcat(caminhoArquivo, ".txt");
+
+    FILE* arquivo = fopen(caminhoArquivo, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo!\n");
+        exit(1);
+    }
+
+    fprintf(arquivo, "%d %d %d\n", linhas, colunas, vidaInicial);
+
+    // Possíveis valores para as células
+    int valores[] = {0, 20, -10};
+    int tamanhoValores = sizeof(valores) / sizeof(valores[0]);
+
+    srand(time(NULL)); // semente para números aleatórios
+
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            if (i == 0 && j == 0) {
+                fprintf(arquivo, "F "); 
+            } else if (i == linhas - 1 && j == colunas - 1){
+                fprintf(arquivo, "I "); 
+            } else {
+                int valorAleatorio = rand() % 5;//gera um valor aleatorio entre 0 e 3
+                //escreve um valor no arquivo(0-0, 1-10, 2-20, 3-B em ASCII)
+                if (valorDaMatriz(valorAleatorio) == (int)'B'){  
+                    fprintf(arquivo, "%c ",'B'); //escreve B no arquivo se valor for 3
+                }
+                else{
+                    fprintf(arquivo, "%d ", valorDaMatriz(valorAleatorio)); //escreve o valor no arquivo
+                }
+            }
+        }
+        fprintf(arquivo, "\n");
+    }
+
+    fclose(arquivo);
+    printf("Mapa gerado com sucesso em: %s\n", caminhoArquivo);
+
 }

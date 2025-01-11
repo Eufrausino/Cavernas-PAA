@@ -84,7 +84,7 @@ void MostrarMapa(Mapa mapa, int linhas, int colunas) {
 
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
-            if (mapa[i][j] == 'F' || mapa[i][j] == 'I') {
+            if (mapa[i][j] == 'F' || mapa[i][j] == 'I'|| mapa[i][j] == 'B') {
                 printf("%c ", mapa[i][j]); // Exibir caracteres
             } else {
                 printf("%d ", mapa[i][j]); // Exibir números
