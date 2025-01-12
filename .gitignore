@@ -3,3 +3,5 @@
 .project
 .settings
 .vscode
+Out/
+Lib/
